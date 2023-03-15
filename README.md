@@ -52,7 +52,26 @@ The feature file includes the feature locations and well-defined scale of the co
 
 The script allows for flexibility in modifying various feature parameters during the burst feature extraction process, which is explained in detail within the `extract_burst.sh` script. By default, the scale factor is set to `2^0.25`, similar to state-of-the-art scale invariant feature extractors.
 
-## Evaluation on the HPatches
+## Evaluation on the HPatches Bursts
+The evaluation of the HPatches dataset is based on the [code](https://github.com/mihaidusmanu/d2-net) from [D2-Net](https://dsmn.ml/publications/d2-net.html) as,
+```bash
+git clone https://github.com/mihaidusmanu/d2-net.git
+cd d2-net/hpatches_sequences/
+bash download.sh
+bash download_cache.sh
+cd ../..
+ln -s d2-net/hpatches_sequences #soft-link for dataset
+```
+
+We synthetically generate noisy bursts for each image in the HPatches dataset to create our `HPatches bursts`. To evaluate our methods, we compare using all images within a noisy burst to using `r2d2` on a common image of a noisy burst, with the original HPatches images serving as gold standard images. We extract features from the gold standard images, noisy images, and noisy bursts using the following command,
+```bash
+./extract_hpatches.sh
+```
+We evaluate the matching performance using iPython notebook, `d2-net/hpatches_sequences/HPatches-Sequences-Matching-Benchmark.ipynb`.
+
+The following demonstrates the average matching performance of `RoBLo` against `r2d2` in strong noise.
+![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png).
+
 ## Evaluation on the Drone Imagery
 ## Training Details
 
