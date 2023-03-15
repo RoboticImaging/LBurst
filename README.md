@@ -40,7 +40,9 @@ Select the directory in which images are stored and perform bias correction for 
 Please consider citing our paper if you use any of the ideas presented in the paper or code from this repository:
 ```
 @inproceedings{ravendran2023burst,
-  author    = {Ahalya Ravendran, Mitch Bryson and Donald G Dansereau},
+  author    = {Ahalya Ravendran and
+               Mitch Bryson and
+               Donald G Dansereau},
   title     = {{RoBLo: Robotic Burst for Low Light 3D Reconstruction}},
   booktitle = {arXiv},
   year      = {2023},
