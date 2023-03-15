@@ -6,7 +6,7 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 - RoBLo: Robotic Burst for Low Light 3D Reconstruction
 - submitted for oral presentation at WACV 2024
 - Authors: [Ahalya Ravendran](ahalyaravendran.com/), [Mitch Bryson](https://scholar.google.com.au/citations?user=yIFgUxwAAAAJ&hl=en/)\, and [Donald G Dansereau](https://roboticimaging.org/)
-- website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible results and visualizations
+- website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible contents and visualizations
 
 <p align="center">
   <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png" width="850" title="BuFF_architecture">
