@@ -27,8 +27,19 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvi
 git clone https://github.com/RoboticImaging/RoBLo.git
 cd RoBLo
 ```
-
 ## Pretrained Models
+We provide eight pre-trained models in the `models/` folder. Five of the pretrained models are trained with different burst sizes and the rest have different patch sizes for a burst of 5 images during training as follows.
+|    model name    | description |
+|------------------:|:------------------:|
+|`RoBLo_N4_B5.pt` | Trained model with a patch size of 4 and burst size of 5 |
+|`RoBLo_N8_B5.pt` | Trained model with a patch size of 8 and burst size of 5 |
+|`RoBLo_N16_B5.pt`  | Trained model with a patch size of 16 and burst size of 5 |
+|`RoBLo_N32_B5.pt`  | Trained model with a patch size of 32 and burst size of 5 |
+|`RoBLo_N64_B5.pt`  | Trained model with a patch size of 64 and burst size of 5 |
+|`RoBLo_N16_B3.pt`  | Trained model with a patch size of 4 and burst size of 3 |
+|`RoBLo_N16_B7.pt`  | Trained model with a patch size of 4 and burst size of 7 |
+|`RoBLo_N16_B9.pt`  | Trained model with a patch size of 4 and burst size of 9 |
+
 ## Robotic Burst Feature Extraction
 ## Evaluation on the HPatches
 ## Evaluation on the Drone Imagery
