@@ -87,11 +87,11 @@ mkdir -p $DATA_ROOT
 ln -fs $DATA_ROOT data 
 mkdir $DATA_ROOT/aachen
 ```
+
 Download the Aachen dataset manually from [here](https://drive.google.com/drive/folders/1fvb5gwqHCV4cr4QPVIEMTWkIhCpwei7n), and save it as `$DATA_ROOT/aachen/database_and_query_images.zip`. Complete the installation and download the remaining training data as,
 ```bash 
 ./download_training_data.sh
 ```
-The training datasets are as follows,
 
 The training datasets are as follows,
 | model name | disk space | number of images | instances |
@@ -99,6 +99,17 @@ The training datasets are as follows,
 | Aachen DB images | 2.7 GB | 4479 | `auto_pairs(aachen_db_images)` |
 | Random Web images | 1.5GB | 3190 |  `auto_pairs(web_images)` |
 
+We introduce burst functions to create a robotic burst for each image in the dataset. To visualize the content of a robotic burst,
+```bash
+python -m tools.burst_dataloader "PairLoader(aachen_flow_pairs)"
+```
+
+For training,
+```bash
+python train_burst.py --save-path /path/to/RoBLo_model.pt 
+```
+
+Training bursts of 5 images with a patch size of 16 on the NVIDIA GeForce RTX 3080 takes approximately 4 minutes per epoch and 37 minutes to complete 25 epochs. This is because we leverage the  `faster r2d2 ` backbone architecture for our approach. Note, the training time will increase as the patch size decreases and the number of images within the robotic bursts increases. For more information on all parameters that can be configured during the training, refer to `python train.py --help`.
 
 ## Dataset
 We evaluate our feature extractor on a burst dataset collected in a light-constrained environment using the UR5e robotic arm and using multiple DJI drones.
