@@ -29,6 +29,10 @@ cd RoBLo
 This repository contains the following sub-modules<br>
 - [assets](https://github.com/RoboticImaging/RoBLo/blob/main/assets/) - Digestible visual content for repository.<br>
 - [models](https://github.com/RoboticImaging/RoBLo/blob/main/models/) - Pretrained models with varying patch size and burst size.<br>
+- [datasets](https://github.com/RoboticImaging/RoBLo/blob/main/datasets/) - Dataset preparation for training.<br>
+- [tools](https://github.com/RoboticImaging/RoBLo/blob/main/tools/) - Tools associated with training including burst dataloader and trainer.<br>
+- [utils](https://github.com/RoboticImaging/RoBLo/blob/main/utils/) - Burst prepearation for visualisation.<br>
+- [nets](https://github.com/RoboticImaging/RoBLo/blob/main/nets/) - Netwrok architecture and loss functions.<br>
 
 ## Pretrained Models
 We provide eight pre-trained models in the `models/` folder. Five of the pretrained models are trained with different burst sizes and the rest have different patch sizes for a burst of 5 images during training as follows.
