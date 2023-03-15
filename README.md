@@ -49,6 +49,11 @@ The feature file includes the feature locations and well-defined scale of the co
 
 The script allows for flexibility in modifying various feature parameters during the burst feature extraction process, which is explained in detail within the `extract_burst.sh` script. By default, the scale factor is set to `2^0.25`, similar to state-of-the-art scale invariant feature extractors.
 
+For visualisation of features with corresponding detection and descriptor confidence,
+```bash
+./confidence_maps.sh
+```
+
 ## Evaluation on the HPatches Bursts
 The evaluation of the HPatches dataset is based on the [code](https://github.com/mihaidusmanu/d2-net) from [D2-Net](https://dsmn.ml/publications/d2-net.html) as,
 ```bash
