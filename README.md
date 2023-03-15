@@ -26,13 +26,12 @@ To download the complete dataset and an example separately refer to the followin
 | ------------- | ----- |
 | Dataset description | [Read me](https://docs.google.com/document/d/1Ht5q7aVqLPeEca0Paon0wND1FC2mDWcwRyw0BCs2ztc/edit?usp=sharing) |
 | Example burst | a burst of noisy images and corresponding ground truth with 1D and 2D apparent motion [here](https://drive.google.com/file/d/11PDClfjjMdVFbSDDxLRm28E7soqPg8FV/view?usp=sharing) (2.1GB) |
-| Dataset with 1D apparent motion | dataset including ground truth and noisy images [here](https://drive.google.com/file/d/19dqyBatFqHk1Yjy4QGMwWPU1Azftk9az/view?usp=sharing) (40.3GB) |
-| Dataset with 2D apparent motion | dataset including ground truth and noisy images [here](https://drive.google.com/file/d/1PZJmaDR7NONibRbJoyAxIZ2VrnEh9QKC/view?usp=sharing) (40.3GB) |
+| Dataset with 1D apparent motion | [dataset](https://drive.google.com/file/d/19dqyBatFqHk1Yjy4QGMwWPU1Azftk9az/view?usp=sharing) including ground truth and noisy images (40.3GB) |
+| Dataset with 2D apparent motion | [dataset](https://drive.google.com/file/d/1PZJmaDR7NONibRbJoyAxIZ2VrnEh9QKC/view?usp=sharing) including ground truth and noisy images (40.3GB) |
 | Drone dataset description | [Read me](https://docs.google.com/document/d/1FguBX3V8Xab8H6nB9H50-dzhQJd-SuclAj2KfzspXoE/edit?usp=sharing) |
-| Example drone burst | a burst of images captured in millilux conditions [here](https://drive.google.com/file/d/1ZoJPNvfSudslJoXgkZUX-9Vww5rGszvs/view?usp=share_link) (2.1GB) |
-| Drone dataset captured using DJI Mini Pro | dataset of 5 scenes captured in millilux conditions [here](
-https://drive.google.com/file/d/1qzSutIh_3T27zfJcRmRJ7Xlg8I-As-zq/view?usp=share_link) (3.48 GB) |
-| Drone dataset captured using DJI Phantom Pro| dataset of 5 scenes captured in millilux conditions [here](https://drive.google.com/file/d/1_siPLHWNl7N5ES7V6iMbQfd-teLk_leW/view?usp=share_link) (7.34 GB) |
+| Example drone burst | [robotic burst](https://drive.google.com/file/d/1ZoJPNvfSudslJoXgkZUX-9Vww5rGszvs/view?usp=share_link) of images captured in millilux conditions (2.1GB) |
+| Drone dataset captured using DJI Mini Pro | [dataset](https://drive.google.com/file/d/1qzSutIh_3T27zfJcRmRJ7Xlg8I-As-zq/view?usp=share_link) of 5 scenes captured in millilux conditions (3.48 GB) |
+| Drone dataset captured using DJI Phantom Pro | [dataset](https://drive.google.com/file/d/1_siPLHWNl7N5ES7V6iMbQfd-teLk_leW/view?usp=share_link)  of 5 scenes captured in millilux conditions (7.34 GB) |
 
 **Preparation:** Download the dataset from above and unpack the zip folder.
 Select the directory in which images are stored and perform bias correction for accurate results for datasets captured using the robotic arm
