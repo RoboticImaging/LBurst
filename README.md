@@ -20,6 +20,11 @@ conda install python tqdm pillow numpy matplotlib scipy
 conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
 
+#### Clone the Git repository.  
+```bash
+git clone https://github.com/RoboticImaging/RoBLo.git
+```
+
 ## Pretrained Models
 ## Robotic Burst Feature Extraction
 ## Evaluation on the HPatches
