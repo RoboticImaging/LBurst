@@ -26,9 +26,9 @@ cd RoBLo
 ```
 
 ## Overview
-This repository contains the following sub-modules
--[assets](https://github.com/RoboticImaging/RoBLo/blob/main/assets/) - Digestible visual content for repository.
--[models](https://github.com/RoboticImaging/RoBLo/blob/main/models/) - Pretrained models with varying patch size and burst size.
+This repository contains the following sub-modules<br>
+-[assets](https://github.com/RoboticImaging/RoBLo/blob/main/assets/) - Digestible visual content for repository.<br>
+-[models](https://github.com/RoboticImaging/RoBLo/blob/main/models/) - Pretrained models with varying patch size and burst size.<br>
 
 ## Pretrained Models
 We provide eight pre-trained models in the `models/` folder. Five of the pretrained models are trained with different burst sizes and the rest have different patch sizes for a burst of 5 images during training as follows.
