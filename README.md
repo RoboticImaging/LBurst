@@ -93,10 +93,12 @@ Download the Aachen dataset manually from [here](https://drive.google.com/drive/
 ```
 The training datasets are as follows,
 
-| full name |disk space | number of images | python instance |
-|:----------------------------:|---|-----|------|-------|--------------------------------|
-| Random Web images | 1.5GB | 3190 | `auto_pairs(web_images)` |
-| Aachen DB images | 2.7GB | 4479 | `auto_pairs(aachen_db_images)` |
+The training datasets are as follows,
+| model name | disk space | number of images | instances |
+|:------------------:|:------------------:|:------------------:|:------------------:|
+| Aachen DB images | 2.7 GB | 4479 | `auto_pairs(aachen_db_images)` |
+| Random Web images | 1.5GB | 3190 |  `auto_pairs(web_images)` |
+
 
 ## Dataset
 We evaluate our feature extractor on a burst dataset collected in a light-constrained environment using the UR5e robotic arm and using multiple DJI drones.
