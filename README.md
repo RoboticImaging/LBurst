@@ -46,7 +46,11 @@ We provide a shell script to extract burst features for a given robotic burst.
 ./extract_burst.sh
 ```
 
-The script saves the `top-k` keypoints as a feature file in numpy format with `roblo` as the file suffix, and saves the file in the same path as the images in the burst. The feature file includes the feature locations and well-defined scale of the common image of the burst as an array of size `N x 3` in 'keypoints'; L2-normalized descriptors, as `N x 128` in `descriptors` and corresponding confidence scores for each keypoint as `scores`. The script allows for flexibility in modifying various feature parameters during the burst feature extraction process, which is explained in detail within the `extract_burst.sh` script. By default, the scale factor is set to `2^0.25`, similar to state-of-the-art scale invariant feature extractors.
+The script saves the `top-k` keypoints as a feature file in numpy format with `roblo` as the file suffix, and saves the file in the same path as the images in the burst.
+
+The feature file includes the feature locations and well-defined scale of the common image of the burst as an array of size `N x 3` in `keypoints`; L2-normalized descriptors, as `N x 128` in `descriptors`; and corresponding confidence scores for each keypoint as `scores`.
+
+The script allows for flexibility in modifying various feature parameters during the burst feature extraction process, which is explained in detail within the `extract_burst.sh` script. By default, the scale factor is set to `2^0.25`, similar to state-of-the-art scale invariant feature extractors.
 
 ## Evaluation on the HPatches
 ## Evaluation on the Drone Imagery
