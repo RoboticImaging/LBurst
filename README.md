@@ -9,7 +9,7 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 - website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible results and visualizations
 
 <p align="center">
-  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png" width="350" title="BuFF_architecture">
+  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png" width="850" title="BuFF_architecture">
 </p>
 
 ## Getting Started
