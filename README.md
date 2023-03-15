@@ -72,7 +72,9 @@ We synthetically generate noisy bursts for each image in the HPatches dataset to
 We evaluate the matching performance using iPython notebook, `d2-net/hpatches_sequences/HPatches-Sequences-Matching-Benchmark.ipynb`.
 
 The following demonstrates the average matching performance of `RoBLo` against `r2d2` in strong noise.
-![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png)
+<p align="center">
+  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png" width="1000" title="BuFF_architecture">
+</p>
 
 ## Evaluation on the Drone Burst Imagery
 We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone burst imagery captured in millilux conditions. For more details on captured burst, refer to Dataset section below.
