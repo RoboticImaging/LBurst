@@ -25,7 +25,7 @@ To download the complete dataset and an example separately refer to the followin
 | Images        | Dataset |
 | ------------- | ----- |
 | Dataset description | [Read me](https://docs.google.com/document/d/1Ht5q7aVqLPeEca0Paon0wND1FC2mDWcwRyw0BCs2ztc/edit?usp=sharing) |
-| Example burst | [robotic  burst](https://drive.google.com/file/d/11PDClfjjMdVFbSDDxLRm28E7soqPg8FV/view?usp=sharing) of noisy images and corresponding ground truth using a robotic arm (2.1GB) |
+| Example burst | [robotic  burst](https://drive.google.com/file/d/11PDClfjjMdVFbSDDxLRm28E7soqPg8FV/view?usp=sharing) of images captured using a robotic arm (2.1GB) |
 | Dataset with 1D apparent motion | [dataset](https://drive.google.com/file/d/19dqyBatFqHk1Yjy4QGMwWPU1Azftk9az/view?usp=sharing) including ground truth and noisy images (40.3GB) |
 | Dataset with 2D apparent motion | [dataset](https://drive.google.com/file/d/1PZJmaDR7NONibRbJoyAxIZ2VrnEh9QKC/view?usp=sharing) including ground truth and noisy images (40.3GB) |
 | Drone dataset description | [Read me](https://docs.google.com/document/d/1FguBX3V8Xab8H6nB9H50-dzhQJd-SuclAj2KfzspXoE/edit?usp=sharing) |
