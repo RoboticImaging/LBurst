@@ -69,7 +69,7 @@ We evaluate the matching performance using iPython notebook, `d2-net/hpatches_se
 The following demonstrates the average matching performance of `RoBLo` against `r2d2` in strong noise.
 ![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png)
 
-## Evaluation on the Drone Imagery
+## Evaluation on the Drone Burst Imagery
 We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone burst imagery captured in millilux conditions. For more details on captured burst, refer to Dataset section below.
 
 ## Training Details
