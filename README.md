@@ -7,10 +7,7 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 - submitted for oral presentation at WACV 2024
 - Authors: [Ahalya Ravendran](ahalyaravendran.com/), [Mitch Bryson](https://scholar.google.com.au/citations?user=yIFgUxwAAAAJ&hl=en/)\, and [Donald G Dansereau](https://roboticimaging.org/)
 - website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible contents and visualizations
-
-<p align="center">
-  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png" width="1000" title="BuFF_architecture">
-</p>
+![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png)
 
 ## Getting Started
 Use ```conda``` to create the environment equipped with Python 3.6+ with standard scientific packages and PyTorch.
@@ -70,9 +67,12 @@ We synthetically generate noisy bursts for each image in the HPatches dataset to
 We evaluate the matching performance using iPython notebook, `d2-net/hpatches_sequences/HPatches-Sequences-Matching-Benchmark.ipynb`.
 
 The following demonstrates the average matching performance of `RoBLo` against `r2d2` in strong noise.
-![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png).
+![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png)
 
 ## Evaluation on the Drone Imagery
+We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone imagery captured in millilux conditions.
+![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/reconstruction_performance.png)
+
 ## Training Details
 
 ## Dataset
