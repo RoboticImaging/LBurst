@@ -13,6 +13,13 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 </p>
 
 ## Getting Started
+Use ```conda``` to create the environment equipped with Python 3.6+ with standard scientific packages and PyTorch.
+
+```bash
+conda install python tqdm pillow numpy matplotlib scipy
+conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
+```
+
 ## Pretrained Models
 ## Robotic Burst Feature Extraction
 ## Evaluation on the HPatches
