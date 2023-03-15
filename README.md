@@ -16,13 +16,16 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 Use ```conda``` to create the environment equipped with Python 3.6+ with standard scientific packages and PyTorch.
 
 ```bash
-conda install python tqdm pillow numpy matplotlib scipy
+conda create -n roblo python=3.9
+conda activate roblo
+conda install tqdm pillow numpy matplotlib scipy
 conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
 
 #### Clone the Git repository.  
 ```bash
 git clone https://github.com/RoboticImaging/RoBLo.git
+cd RoBLo
 ```
 
 ## Pretrained Models
