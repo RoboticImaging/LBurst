@@ -80,6 +80,17 @@ The following demonstrates the average matching performance of `RoBLo` against `
 We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone burst imagery captured in millilux conditions. For more details on captured burst, refer to Dataset section below.
 
 ## Training Details
+Create a folder in a location where you have sufficient disk space (8 GB required) to host all the data as,
+```bash
+DATA_ROOT=/path/to/data
+mkdir -p $DATA_ROOT
+ln -fs $DATA_ROOT data 
+mkdir $DATA_ROOT/aachen
+```
+Download the Aachen dataset manually from [here](https://drive.google.com/drive/folders/1fvb5gwqHCV4cr4QPVIEMTWkIhCpwei7n), and save it as `$DATA_ROOT/aachen/database_and_query_images.zip`. Complete the installation and download the remaining training data as,
+```bash 
+./download_training_data.sh
+```
 
 ## Dataset
 We evaluate our feature extractor on a burst dataset collected in a light-constrained environment using the UR5e robotic arm and using multiple DJI drones.
