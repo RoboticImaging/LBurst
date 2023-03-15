@@ -97,7 +97,7 @@ The training datasets are as follows,
 | model name | disk space | number of images | instances |
 |:------------------:|:------------------:|:------------------:|:------------------:|
 | Aachen DB images | 2.7 GB | 4479 | `auto_pairs(aachen_db_images)` |
-| Random Web images | 1.5GB | 3190 |  `auto_pairs(web_images)` |
+| Random Web images | 1.5 GB | 3190 |  `auto_pairs(web_images)` |
 
 We introduce burst functions to create a robotic burst for each image in the dataset. To visualize the content of a robotic burst,
 ```bash
