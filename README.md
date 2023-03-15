@@ -34,7 +34,7 @@ To download the complete dataset and an example separately refer to the followin
 | Drone dataset captured using DJI Phantom Pro | [dataset](https://drive.google.com/file/d/1_siPLHWNl7N5ES7V6iMbQfd-teLk_leW/view?usp=share_link)  of 5 scenes captured in millilux conditions (7.34 GB) |
 
 **Preparation:** Download the dataset from above and unpack the zip folder.
-Select the directory in which images are stored and perform bias correction for accurate results for datasets captured using the robotic arm
+For datasets captured using a robotic arm, select the directory in which images are stored and perform bias correction for accurate results.
 
 ## BibTex Citation
 Please consider citing our paper if you use any of the ideas presented in the paper or code from this repository:
