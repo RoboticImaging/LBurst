@@ -70,13 +70,7 @@ The following demonstrates the average matching performance of `RoBLo` against `
 ![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png)
 
 ## Evaluation on the Drone Imagery
-We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone imagery captured in millilux conditions.
-<p align="center">
-  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/features.png" width="1000" title="BuFF_architecture">
-</p>
-<p align="center">
-  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/reconstruction.png" width="1000" title="BuFF_architecture">
-</p>
+We evaluate reconstruction performance and camera pose estimation for noise-limited burst datasets captured with 1D and 2D apparent motion and reconstruction performance using drone burst imagery captured in millilux conditions. For more details on captured burst, refer to Dataset section below.
 
 ## Training Details
 
