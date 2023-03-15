@@ -60,7 +60,7 @@ cd d2-net/hpatches_sequences/
 bash download.sh
 bash download_cache.sh
 cd ../..
-ln -s d2-net/hpatches_sequences #soft-link for dataset
+ln -s d2-net/hpatches_sequences #soft-link for the HPatches dataset
 ```
 
 We synthetically generate noisy bursts for each image in the HPatches dataset to create our `HPatches bursts`. To evaluate our methods, we compare using all images within a noisy burst to using `r2d2` on a common image of a noisy burst, with the original HPatches images serving as gold standard images. We extract features from the gold standard images, noisy images, and noisy bursts using the following command,
