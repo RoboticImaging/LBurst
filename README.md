@@ -3,7 +3,7 @@ Robotic Burst for Low Light 3D Reconstruction
 
 We introduce **a learning architecture for a robotic burst** to jointly detect and describe blob features with well-defined scales. We demonstrate **3D reconstruction in millilux conditions** using captured **drone imagery** as burst sequences on the fly.
 
-- [RoBLo: Robotic Burst for Low Light 3D Reconstruction]
+- RoBLo: Robotic Burst for Low Light 3D Reconstruction
 - submitted for oral presentation at WACV 2024
 - Authors: [Ahalya Ravendran](ahalyaravendran.com/), [Mitch Bryson](https://scholar.google.com.au/citations?user=yIFgUxwAAAAJ&hl=en/)\, and [Donald G Dansereau](https://roboticimaging.org/)
 - website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible results and visualizations
