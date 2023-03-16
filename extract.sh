@@ -14,13 +14,13 @@ noise_var=10
 run_tag=test
 r2d2_model="models/R2D2.pt"
 burst_model="models/RoBLo_N16_B5.pt"
-image_list="imgs/image_list_hpatches_sequences.txt"
+image_list="imgs/image_list.txt"
 
 # We use GPU to accelerate feature extraction
 gpu=0
 
-# Uncomment the following for a shorter list of test hpatches images
-#image_list="imgs/image_list_hpatches_short.txt"
+# Uncomment the following for the hpatches dataset evaluation
+#image_list="imgs/image_list_hpatches_sequences.txt" 
 
 # R2D2 on gold standard image
 python extract.py --model $r2d2_model --images $image_list --gpu ${gpu} \
