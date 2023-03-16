@@ -12,7 +12,8 @@ import glob
 
 from nets.patchnet import *
 from tools import common
-from tools.dataloader import norm_RGB, tensor2img
+from tools.cstack_dataloader import norm_RGB, \
+    tensor2img
 from tools.burst_generation import generate_singleburst, center_crop, add_noise
 from tools.burst_dataloader import norm as norm_burst
 
@@ -40,13 +41,11 @@ class NonMaxSuppression(torch.nn.Module):
         self.rel_thr = rel_thr
         self.rep_thr = rep_thr
 
-
     def forward(self, reliability, repeatability, **kw):
         assert len(reliability) == len(repeatability) == 1
         reliability, repeatability = reliability[0], repeatability[0]
 
         maxima = (repeatability == self.max_filter(repeatability))
-
         maxima *= (repeatability >= self.rep_thr)
         maxima *= (reliability >= self.rel_thr)
 
@@ -62,7 +61,7 @@ def extract_multiscale(net, img, detector, scale_f=2 ** 0.25,
     torch.backends.cudnn.benchmark = False
     print(img.shape)
 
-    #Extract RoBLo features
+    # Extract RoBLo features
     B, channels, H, W = img.shape
     assert B == 1 and channels == 3*burst_size, "should be a batch with a single RGB image"
     assert max_scale <= 1
@@ -73,6 +72,7 @@ def extract_multiscale(net, img, detector, scale_f=2 ** 0.25,
         if s - 0.001 <= min(max_scale, max_size / max(H, W)):
             nh, nw = img.shape[2:]
             if verbose: print(f"extracting at scale x{s:.02f} = {nw:4d}x{nh:3d}")
+
             with torch.no_grad():
                 res = net(imgs=[img])
 
@@ -125,7 +125,6 @@ def extract_keypoints(args):
         if img_path.endswith('.txt'):
             args.images = open(
                 img_path).read().splitlines() + args.images
-            continue
 
         if os.path.isdir(img_path):
             img_path = glob.glob(f"{img_path}/*png")
@@ -133,6 +132,7 @@ def extract_keypoints(args):
 
             burst = []
             print(f"\nExtracting features for {img_path}")
+
             for file in img_path:
                 image = Image.open(file).convert('RGB')
                 burst.append(np.array(image))
@@ -163,6 +163,7 @@ def extract_keypoints(args):
         scores = scores.cpu().numpy()
         idxs = scores.argsort()[
                -args.top_k or None:]
+
         outpath = img_path + '.' + args.tag
         print(f"Saving {len(idxs)} keypoints to {outpath}")
         np.savez(open(outpath, 'wb'),
@@ -194,6 +195,7 @@ def get_input_img(args, orig_img):
                 ([add_noise(output_img[:, :, k], mean, args.noise_var) for k in range(output_img.shape[2])]), axis=2)
         img = norm_burst(output_img)[None]
     return img, output_img
+
 
 
 # command-line arguements for RoBLo features.
