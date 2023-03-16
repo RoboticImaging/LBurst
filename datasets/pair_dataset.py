@@ -9,7 +9,7 @@ from PIL import Image
 
 from tools.transforms import instanciate_transformation
 from tools.transforms_tools import persp_apply
-from utils.burst_generation import generate_burst, crop_center_array
+from tools.burst_generation import generate_burst, crop_center_array
 from .dataset import Dataset, CatDataset
 
 
