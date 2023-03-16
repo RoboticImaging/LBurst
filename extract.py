@@ -12,7 +12,7 @@ import glob
 
 from nets.patchnet import *
 from tools import common
-from tools.cstack_dataloader import norm_RGB, \
+from tools.robotic_burst_dataloader import norm_RGB, \
     tensor2img
 from tools.burst_generation import generate_singleburst, center_crop, add_noise
 from tools.burst_dataloader import norm as norm_burst
