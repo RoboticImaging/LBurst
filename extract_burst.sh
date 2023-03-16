@@ -1,5 +1,5 @@
 #!/bin/bash
-# Extraction of features - Salient keypoint locations, welll-defined scales and descriptors
+# Extraction of features - Salient keypoint locations, well-defined scales and descriptors
 
 # This script extract R2D2 features on single images and noise-limited single images.
 # It also extracts RoBLo features in a robotic burst of images corresponding to the common middle image.
@@ -27,11 +27,11 @@ python extract.py --model $r2d2_model --images $image_list --gpu ${gpu} \
 --burst-size 1 --tag r2d2_$run_tag --crop-size $crop_size --noise-var 0
 
 # R2D2 on noise-limited image with increasing amount of noise
-for n in 5 10 20 50
-do
-  python extract.py --model $r2d2_model --images $image_list --gpu ${gpu} \
-  --burst-size 1 --tag r2d2_noise_${n}_${run_tag} --crop-size $crop_size --noise-var ${n}
-done
+#for n in 10
+#do
+#  python extract.py --model $r2d2_model --images $image_list --gpu ${gpu} \
+#  --burst-size 1 --tag r2d2_noise_${n}_${run_tag} --crop-size $crop_size --noise-var ${n}
+#done
 
 # RoBLo on noise-limited burst
 python extract.py --model $burst_model --images $image_list --gpu ${gpu} \
