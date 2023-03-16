@@ -125,6 +125,7 @@ def extract_keypoints(args):
         if img_path.endswith('.txt'):
             args.images = open(
                 img_path).read().splitlines() + args.images
+            continue
 
         if os.path.isdir(img_path):
             img_path = glob.glob(f"{img_path}/*png")
@@ -132,7 +133,7 @@ def extract_keypoints(args):
 
             burst = []
             print(f"\nExtracting features for {img_path}")
-
+            
             for file in img_path:
                 image = Image.open(file).convert('RGB')
                 burst.append(np.array(image))
@@ -195,7 +196,6 @@ def get_input_img(args, orig_img):
                 ([add_noise(output_img[:, :, k], mean, args.noise_var) for k in range(output_img.shape[2])]), axis=2)
         img = norm_burst(output_img)[None]
     return img, output_img
-
 
 
 # command-line arguements for RoBLo features.
