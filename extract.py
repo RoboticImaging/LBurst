@@ -12,9 +12,8 @@ import glob
 
 from nets.patchnet import *
 from tools import common
-from tools.dataloader import norm_RGB, \
-    tensor2img
-from utils.burst_generation import generate_singleburst, center_crop, add_noise
+from tools.dataloader import norm_RGB, tensor2img
+from tools.burst_generation import generate_singleburst, center_crop, add_noise
 from tools.burst_dataloader import norm as norm_burst
 
 
