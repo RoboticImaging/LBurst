@@ -2,7 +2,7 @@
 # CC BY-NC-SA 3.0
 # Available only for non-commercial use
 
-# Modified for RoBLo features extraction
+# Modified for RoBLo feature extraction
 
 import matplotlib.pyplot as plt
 import numpy as np
