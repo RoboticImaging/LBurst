@@ -44,12 +44,10 @@ class PairLoader:
         self.dataset = dataset
         self.distort = instanciate_transformation(distort)
         self.crop = instanciate_transformation(crop)
-        #self.norm = instanciate_transformation(norm)
         self.scale = instanciate_transformation(scale)
-        self.idx_as_rng_seed = idx_as_rng_seed # to remove randomness
+        self.idx_as_rng_seed = idx_as_rng_seed
         self.what = what.split() if isinstance(what, str) else what
-        self.n_samples = 5 # number of random trials per image
-        #self.burst_size = burst_size
+        self.n_samples = 5
 
 
     def __len__(self):
@@ -63,22 +61,17 @@ class PairLoader:
         short_repr = lambda s: repr(s).strip().replace('\n',', ')[14:-1].replace('    ',' ')
         fmt_str += '  Distort: %s\n' % short_repr(self.distort)
         fmt_str += '  Crop: %s\n' % short_repr(self.crop)
-        #fmt_str += '  Norm: %s\n' % short_repr(self.norm)
         return fmt_str
 
     def __getitem__(self, i):
-        #from time import time as now; t0 = now()
         if self.idx_as_rng_seed:
             import random
             random.seed(i)
             np.random.seed(i)
 
-        # Retrieve an image pair and their absolute flow
+        # retrieve an image pair and their corresponding transformation
         img_a, img_b, metadata = self.dataset.get_pair(i, self.what)
 
-        # aflow contains pixel coordinates indicating where each
-        # pixel from the left image ended up in the right image
-        # as (x,y) pairs, but its shape is (H,W,2)
         aflow = np.float32(metadata['aflow'])
         mask = metadata.get('mask', np.ones(aflow.shape[:2],np.uint8))
 
@@ -89,7 +82,7 @@ class PairLoader:
         if self.distort:
             img_b = self.distort(img_b)
 
-        # apply the same transformation to the flow
+        # apply the same transformation to the flow map
         aflow[:] = persp_apply(img_b['persp'], aflow.reshape(-1,2)).reshape(aflow.shape)
         corres = None
         if 'corres' in metadata:
@@ -100,11 +93,9 @@ class PairLoader:
         homography = None
         if 'homography' in metadata:
             homography = np.float32(metadata['homography'])
-            # p_b = homography * p_a
             persp = np.float32(img_b['persp']+(1,)).reshape(3,3)
             homography = persp @ homography
 
-        # determine crop size
         img_b = img_b['img']
         crop_size = self.crop({'imsize':(10000,10000)})['imsize']
         output_size_a = min(img_a.size, crop_size)
@@ -119,8 +110,6 @@ class PairLoader:
         assert aflow.shape == (ah, aw, 2)
         assert mask.shape == (ah, aw)
 
-        # Let's start by computing the scale of the
-        # optical flow and applying a median filter:
         dx = np.gradient(aflow[:,:,0])
         dy = np.gradient(aflow[:,:,1])
         scale = np.sqrt(np.clip(np.abs(dx[1]*dy[0] - dx[0]*dy[1]), 1e-16, 1e16))
@@ -133,7 +122,7 @@ class PairLoader:
             r = l + int(0.5 + size)
             if l < 0: l,r = (0, r - l)
             if r > w: l,r = (l + w - r, w)
-            if l < 0: l,r = 0,w # larger than width
+            if l < 0: l,r = 0,w
             return slice(l,r)
         def window(cx, cy, win_size, scale, img_shape):
             return (window1(cy, win_size[1]*scale, img_shape[0]),
@@ -146,25 +135,17 @@ class PairLoader:
             y, x = np.unravel_index(n, sample_w.shape)
             return x, y
 
-        # Find suitable left and right windows
-        trials = 0 # take the best out of few trials
+        trials = 0
         best = -np.inf, None
         for _ in range(50*self.n_samples):
-            if trials >= self.n_samples: break # finished!
+            if trials >= self.n_samples: break
 
-            # pick a random valid point from the first image
             if n_valid_pixel == 0: break
             c1x, c1y = sample_valid_pixel()
-
-            # Find in which position the center of the left
-            # window ended up being placed in the right image
             c2x, c2y = (aflow[c1y, c1x] + 0.5).astype(np.int32)
             if not(0 <= c2x < bw and 0 <= c2y < bh): continue
-
-            # Get the flow scale
             sigma = scale[c1y, c1x]
 
-            # Determine sampling windows
             if 0.2 < sigma < 1:
                 win1 = window(c1x, c1y, output_size_a, 1/sigma, img_a.shape)
                 win2 = window(c2x, c2y, output_size_b, 1, img_b.shape)
@@ -172,26 +153,22 @@ class PairLoader:
                 win1 = window(c1x, c1y, output_size_a, 1, img_a.shape)
                 win2 = window(c2x, c2y, output_size_b, sigma, img_b.shape)
             else:
-                continue # bad scale
+                continue
 
-            # compute a score based on the flow
             x2,y2 = aflow[win1].reshape(-1, 2).T.astype(np.int32)
-            # Check the proportion of valid flow vectors
             valid = (win2[1].start <= x2) & (x2 < win2[1].stop) \
                   & (win2[0].start <= y2) & (y2 < win2[0].stop)
             score1 = (valid * mask[win1].ravel()).mean()
-            # check the coverage of the second window
             accu2[:] = False
             accu2[Q(y2[valid],win2[0]), Q(x2[valid],win2[1])] = True
             score2 = accu2.mean()
-            # Check how many hits we got
             score = min(score1, score2)
 
             trials += 1
             if score > best[0]:
                 best = score, win1, win2
 
-        if None in best: # counldn't find a good window
+        if None in best:
             img_a = np.zeros(output_size_a[::-1]+(3,), dtype=np.uint8)
             img_b = np.zeros(output_size_b[::-1]+(3,), dtype=np.uint8)
             aflow = np.nan * np.ones((2,)+output_size_a[::-1], dtype=np.float32)
@@ -203,8 +180,8 @@ class PairLoader:
             img_b = img_b[win2]
             aflow = aflow[win1] - np.float32([[[win2[1].start, win2[0].start]]])
             mask = mask[win1]
-            aflow[~mask.view(bool)] = np.nan # mask bad pixels!
-            aflow = aflow.transpose(2,0,1) # --> (2,H,W)
+            aflow[~mask.view(bool)] = np.nan
+            aflow = aflow.transpose(2,0,1)
 
             if corres is not None:
                 corres[:,0] -= (win1[1].start, win1[0].start)
@@ -218,7 +195,6 @@ class PairLoader:
                 homography = trans2 @ homography @ trans1
                 homography /= homography[2,2]
 
-            # rescale if necessary
             if img_a.shape[:2][::-1] != output_size_a:
                 sx, sy = (np.float32(output_size_a)-1)/(np.float32(img_a.shape[:2][::-1])-1)
                 img_a = np.asarray(Image.fromarray(img_a).resize(output_size_a, Image.ANTIALIAS))
@@ -253,8 +229,7 @@ class PairLoader:
             mgrid = np.mgrid[0:H, 0:W][::-1].astype(np.float32)
             flow = aflow - mgrid
 
-
-        img_a, img_b = generate_burst(img_a, img_b, burst_size=9)
+        img_a, img_b = generate_burst(img_a, img_b, burst_size=5)
 
         img_a = np.uint8(img_a)
         img_b = np.uint8(img_b)
@@ -316,8 +291,6 @@ def collate(batch, _use_shared_memory=True):
     if isinstance(batch[0], torch.Tensor):
         out = None
         if _use_shared_memory:
-            # If we're in a background process, concatenate directly into a
-            # shared memory tensor to avoid an extra copy
             numel = sum([x.numel() for x in batch])
             storage = batch[0].storage()._new_shared(numel)
             out = batch[0].new(storage)
@@ -326,7 +299,6 @@ def collate(batch, _use_shared_memory=True):
             and elem_type.__name__ != 'string_':
         elem = batch[0]
         assert elem_type.__name__ == 'ndarray'
-        # array of string classes and object
         if re.search('[SaUO]', elem.dtype.str) is not None:
             raise TypeError(error_msg.format(elem.dtype))
         batch = [torch.from_numpy(b) for b in batch]
@@ -374,9 +346,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     from datasets import *
-    #auto_pairs = lambda db: SyntheticPairDataset(db,
-    #    'RandomScale(256,1024,can_upscale=True)',
-    #    'RandomTilting(0.5), PixelNoise(25)')
     auto_pairs = lambda db: SyntheticPairDataset(db,
         'RandomScale(256,1024,can_upscale=True)',
         'RandomTilting(0.01), PixelNoise(0)')
