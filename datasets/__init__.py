@@ -2,7 +2,7 @@
 # CC BY-NC-SA 3.0
 # Available only for non-commercial use
 
-# Modified for RoBLo features extraction. We only use web_images and aachen_db_images for training with known flow map between pairs
+# Modified for RoBLo feature extraction. We only use web_images and aachen_db_images for training with known flow map between pairs
 
 from .pair_dataset import CatPairDataset, SyntheticPairDataset, TransformedPairs, SyntheticBurstPairDataset, TransformedBurstPairs
 from .imgfolder import ImgFolder
