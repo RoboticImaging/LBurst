@@ -9,7 +9,7 @@ import torch
 import torch.optim as optim
 
 from tools import common, trainer
-from tools.burst_dataloader import *
+from tools.robotic_burst_dataloader import *
 from nets.patchnet import *
 from nets.losses import *
 from torch.utils.tensorboard import SummaryWriter
