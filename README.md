@@ -1,5 +1,5 @@
 # LBurst
-Official implementation of Robotic Burst for Low Light 3D Reconstruction
+Official implementation of LBurst: Learning-based Robotic Burst Feature Extraction for 3D Reconstruction in Low-Light
 
 We introduce **a learning architecture for a robotic burst** to jointly detect and describe blob features with well-defined scales. We demonstrate **3D reconstruction in millilux conditions** using captured **drone imagery** as burst sequences on the fly.
 
