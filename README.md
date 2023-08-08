@@ -1,52 +1,52 @@
-# RoBLo
+# LBurst
 Official implementation of Robotic Burst for Low Light 3D Reconstruction
 
 We introduce **a learning architecture for a robotic burst** to jointly detect and describe blob features with well-defined scales. We demonstrate **3D reconstruction in millilux conditions** using captured **drone imagery** as burst sequences on the fly.
 
-- RoBLo: Robotic Burst for Low Light 3D Reconstruction
+- LBurst: Robotic Burst for Low Light 3D Reconstruction
 - submitted for oral presentation at WACV 2024
 - Authors: [Ahalya Ravendran](ahalyaravendran.com/), [Mitch Bryson](https://scholar.google.com.au/citations?user=yIFgUxwAAAAJ&hl=en/)\, and [Donald G Dansereau](https://roboticimaging.org/)
-- website: [roboticimaging.org/RoBLo](https://roboticimaging.org/Projects/RoBLo/) with dataset details, digestible contents and visualizations
-![image](https://github.com/RoboticImaging/RoBLo/blob/main/assets/architecture.png)
+- website: [roboticimaging.org/LBurst](https://roboticimaging.org/Projects/LBurst/) with dataset details, digestible contents and visualizations
+![image](https://github.com/RoboticImaging/LBurst/blob/main/assets/architecture.png)
 
 ## Getting Started
 Use ```conda``` to create the environment equipped with Python 3.6+ with standard scientific packages and PyTorch.
 
 ```bash
-conda create -n roblo python=3.9
-conda activate roblo
+conda create -n LBurst python=3.9
+conda activate LBurst
 conda install tqdm pillow numpy matplotlib scipy
 conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
 
 #### Clone the Git repository.  
 ```bash
-git clone https://github.com/RoboticImaging/RoBLo.git
-cd RoBLo
+git clone https://github.com/RoboticImaging/LBurst.git
+cd LBurst
 ```
 
 ## Overview
 This repository contains the following sub-modules<br>
-- [assets](https://github.com/RoboticImaging/RoBLo/blob/main/assets/) - Digestible visual content for repository.<br>
-- [datasets](https://github.com/RoboticImaging/RoBLo/blob/main/datasets/) - Dataset preparation for training.<br>
-- [imgs](https://github.com/RoboticImaging/RoBLo/blob/main/imgs/) - Images and image list for testing.<br>
-- [models](https://github.com/RoboticImaging/RoBLo/blob/main/models/) - Pretrained models with varying patch size and burst size.<br>
-- [nets](https://github.com/RoboticImaging/RoBLo/blob/main/nets/) - Netwrok architecture and loss functions.<br>
-- [tools](https://github.com/RoboticImaging/RoBLo/blob/main/tools/) - Tools associated with training including burst dataloader and trainer.<br>
-- [utils](https://github.com/RoboticImaging/RoBLo/blob/main/utils/) - Burst prepearation for visualisation.<br>
+- [assets](https://github.com/RoboticImaging/LBurst/blob/main/assets/) - Digestible visual content for repository.<br>
+- [datasets](https://github.com/RoboticImaging/LBurst/blob/main/datasets/) - Dataset preparation for training.<br>
+- [imgs](https://github.com/RoboticImaging/LBurst/blob/main/imgs/) - Images and image list for testing.<br>
+- [models](https://github.com/RoboticImaging/LBurst/blob/main/models/) - Pretrained models with varying patch size and burst size.<br>
+- [nets](https://github.com/RoboticImaging/LBurst/blob/main/nets/) - Netwrok architecture and loss functions.<br>
+- [tools](https://github.com/RoboticImaging/LBurst/blob/main/tools/) - Tools associated with training including burst dataloader and trainer.<br>
+- [utils](https://github.com/RoboticImaging/LBurst/blob/main/utils/) - Burst prepearation for visualisation.<br>
 
 ## Pretrained Models
 We provide eight pre-trained models in the `models/` folder. Five of the pretrained models are trained with different burst sizes and the rest have different patch sizes for a burst of 5 images during training as follows.
 | model name | description |
 |:------------------:|:------------------:|
-|`RoBLo_N4_B5.pt` | Trained model with a patch size of 4 and burst size of 5 |
-|`RoBLo_N8_B5.pt` | Trained model with a patch size of 8 and burst size of 5 |
-|`RoBLo_N16_B5.pt` | Trained model with a patch size of 16 and burst size of 5 |
-|`RoBLo_N32_B5.pt` | Trained model with a patch size of 32 and burst size of 5 |
-|`RoBLo_N64_B5.pt` | Trained model with a patch size of 64 and burst size of 5 |
-|`RoBLo_N16_B3.pt` | Trained model with a patch size of 16 and burst size of 3 |
-|`RoBLo_N16_B7.pt` | Trained model with a patch size of 16 and burst size of 7 |
-|`RoBLo_N16_B9.pt` | Trained model with a patch size of 16 and burst size of 9 |
+|`LBurst_N4_B5.pt` | Trained model with a patch size of 4 and burst size of 5 |
+|`LBurst_N8_B5.pt` | Trained model with a patch size of 8 and burst size of 5 |
+|`LBurst_N16_B5.pt` | Trained model with a patch size of 16 and burst size of 5 |
+|`LBurst_N32_B5.pt` | Trained model with a patch size of 32 and burst size of 5 |
+|`LBurst_N64_B5.pt` | Trained model with a patch size of 64 and burst size of 5 |
+|`LBurst_N16_B3.pt` | Trained model with a patch size of 16 and burst size of 3 |
+|`LBurst_N16_B7.pt` | Trained model with a patch size of 16 and burst size of 7 |
+|`LBurst_N16_B9.pt` | Trained model with a patch size of 16 and burst size of 9 |
 
 ## Robotic Burst Feature Extraction
 We provide a shell script to extract burst features for a given robotic burst.
@@ -54,7 +54,7 @@ We provide a shell script to extract burst features for a given robotic burst.
 ./extract_burst.sh
 ```
 
-The script saves the `top-k` keypoints as a feature file in numpy format with `roblo` as the file suffix, and saves the file in the same path as the images in the burst.
+The script saves the `top-k` keypoints as a feature file in numpy format with `LBurst` as the file suffix, and saves the file in the same path as the images in the burst.
 
 The feature file includes the feature locations and well-defined scale of the common image of the burst as an array of size `N x 3` in `keypoints`; L2-normalized descriptors, as `N x 128` in `descriptors`; and corresponding confidence scores for each keypoint as `scores`.
 
@@ -80,9 +80,9 @@ We synthetically generate noisy bursts for each image in the HPatches dataset to
 
 We evaluate the matching performance using iPython notebook, `d2-net/hpatches_sequences/HPatches-Sequences-Matching-Benchmark.ipynb`.
 
-The following demonstrates the average matching performance of `RoBLo` against `r2d2` in strong noise.
+The following demonstrates the average matching performance of `LBurst` against `r2d2` in strong noise.
 <p align="center">
-  <img src="https://github.com/RoboticImaging/RoBLo/blob/main/assets/matching_performance.png" width="1000" title="BuFF_architecture">
+  <img src="https://github.com/RoboticImaging/LBurst/blob/main/assets/matching_performance.png" width="1000" title="BuFF_architecture">
 </p>
 
 ## Evaluation on the Drone Burst Imagery
@@ -115,7 +115,7 @@ python -m tools.burst_dataloader "PairLoader(aachen_flow_pairs)"
 
 For training,
 ```bash
-python train_burst.py --save-path /path/to/RoBLo_model.pt 
+python train_burst.py --save-path /path/to/LBurst_model.pt 
 ```
 
 Training bursts of 5 images with a patch size of 16 on the NVIDIA GeForce RTX 3080 takes approximately 4 minutes per epoch and 37 minutes to complete 25 epochs. This is because we leverage the  `faster r2d2 ` backbone architecture for our approach. Note, the training time will increase as the patch size decreases and the number of images within the robotic bursts increases. For more information on all parameters that can be configured during the training, refer to `python train.py --help`.
@@ -142,7 +142,7 @@ Please consider citing our paper if you use any of the ideas presented in the pa
 ```
 @inproceedings{ravendran2023burst,
   author    = {Ahalya Ravendran, Mitch Bryson and Donald G Dansereau},
-  title     = {{RoBLo: Robotic Burst for Low Light 3D Reconstruction}},
+  title     = {{LBurst: Robotic Burst for Low Light 3D Reconstruction}},
   booktitle = {arXiv},
   year      = {2023},
 }
