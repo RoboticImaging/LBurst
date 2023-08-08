@@ -7,7 +7,7 @@ We introduce **a learning architecture for a robotic burst** to jointly detect a
 - submitted for oral presentation at WACV 2024
 - Authors: [Ahalya Ravendran](ahalyaravendran.com/), [Mitch Bryson](https://scholar.google.com.au/citations?user=yIFgUxwAAAAJ&hl=en/)\, and [Donald G Dansereau](https://roboticimaging.org/)
 - website: [roboticimaging.org/LBurst](https://roboticimaging.org/Projects/LBurst/) with dataset details, digestible contents and visualizations
-
+<br/>
 ![image](https://github.com/RoboticImaging/LBurst/blob/main/assets/architecture.png)
 
 ## Getting Started
